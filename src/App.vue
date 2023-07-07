@@ -1,34 +1,12 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from '@/components/HelloWorld.vue'
+import MlSolver from '@/entities/solver/ml-solver'
 
-// Define the variables and constants
-import * as tf from '@tensorflow/tfjs';
+// Define the data points for the system of linear equations
+const x = [[1, 2], [1, 2]]
+const y = [[3], [5]]
 
-// Define the variables and constants
-const x = tf.tensor([[1, 2], [1, 2], [1, 2]]);
-const y = tf.tensor([3, 5, 0]);
-
-// Define the model
-const model = tf.sequential();
-model.add(tf.layers.dense({ units: 1, inputShape: [2] }));
-
-// Compile the model
-model.compile({ optimizer: 'sgd', loss: 'meanSquaredError' });
-
-// Train the model
-async function trainModel() {
-  for (let i = 0; i < 20; i++) {
-    const response = await model.fit(x, y, { epochs: 10 });
-    console.log(response.history.loss[0]);
-  }
-}
-
-// Call the trainModel function
-trainModel().then(() => {
-  // Use the trained model to make predictions
-  const predictions = model.predict(x);
-  (predictions as tf.Tensor).print();
-});
+const result = MlSolver.solve(x, y)
 </script>
 
 <template>
@@ -41,6 +19,8 @@ trainModel().then(() => {
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+
+  {{ result }}
 </template>
 
 <style scoped>
