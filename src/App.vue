@@ -3,7 +3,10 @@ import HelloWorld from '@/components/HelloWorld.vue'
 import MlSolver from '@/entities/solver/ml-solver'
 
 // Define the data points for the system of linear equations
-const x = [[1, 2], [1, 2]]
+const x = [
+  [1, 2],
+  [1, 2]
+]
 const y = [[3], [5]]
 
 const result = MlSolver.solve(x, y)
