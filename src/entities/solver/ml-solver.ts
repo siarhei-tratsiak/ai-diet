@@ -3,9 +3,9 @@ import * as tf from '@tensorflow/tfjs'
 import Solver from '@/entities/solver/solver'
 
 export default class MlSolver extends Solver {
-  public static solve(x: number[][], y: number[][]): number[] {
+  public static solve(x: number[][], y: number[]): number[] {
     const tensorX = tf.tensor2d(x)
-    const tensorY = tf.tensor2d(y)
+    const tensorY = tf.tensor1d(y)
 
     const numCoefficients = tensorX.shape[1]
     const coefficients = tf.variable(tf.randomUniform([numCoefficients, 1]))
@@ -35,13 +35,13 @@ export default class MlSolver extends Solver {
     return tf.matMul(tensorX, coefficients)
   }
 
-  private static loss(predictions: tf.Tensor<tf.Rank>, tensorY: tf.Tensor2D) {
+  private static loss(predictions: tf.Tensor<tf.Rank>, tensorY: tf.Tensor1D) {
     return predictions.sub(tensorY).square().mean().asScalar()
   }
 
   private static optimizerFunction(
     tensorX: tf.Tensor2D,
-    tensorY: tf.Tensor2D,
+    tensorY: tf.Tensor1D,
     coefficients: tf.Variable<tf.Rank>
   ) {
     const predictions = this.predict(tensorX, coefficients)

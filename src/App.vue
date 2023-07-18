@@ -7,7 +7,7 @@ const x = [
   [1, 2],
   [1, 2]
 ]
-const y = [[3], [5]]
+const y = [3, 5]
 
 const result = MlSolver.solve(x, y)
 </script>
