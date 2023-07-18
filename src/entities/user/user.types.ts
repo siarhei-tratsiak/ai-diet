@@ -7,18 +7,18 @@ export interface IUser {
   weightGoal: weightGoal
 }
 
-enum activity {
+export enum activity {
   low,
   medium,
   hight
 }
 
-enum sex {
+export enum sex {
   male,
   female
 }
 
-enum weightGoal {
+export enum weightGoal {
   lose,
   keep,
   gain
