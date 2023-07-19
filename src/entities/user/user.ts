@@ -1,4 +1,4 @@
-import defaultUser from '@/data/defaultUser'
+import defaultUser from '@/data/default-user'
 import { IUser } from '@/entities/user/user.types'
 import Singleton from '@/utils/singleton'
 
