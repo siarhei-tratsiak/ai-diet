@@ -1,5 +1,5 @@
-import { constraint } from '@/entities/constraint/constraint.types'
+import { Constraint } from '@/entities/constraint/constraint.types'
 
 export default interface IConstraintService {
-  getConstraints(): Required<constraint>
+  getConstraints(): Required<Constraint>
 }

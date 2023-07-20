@@ -1,4 +1,4 @@
-import { constraint } from '@/entities/constraint/constraint.types'
+import { Constraint } from '@/entities/constraint/constraint.types'
 import IConstraintService from '@/services/constraint/constraint-service.types'
 import Singleton from '@/utils/singleton'
 
@@ -6,11 +6,11 @@ import Singleton from '@/utils/singleton'
 export default abstract class ConstraintService
   extends Singleton<ConstraintService>()
   implements IConstraintService {
-  public getConstraints(): Required<constraint> {
+  public getConstraints(): Required<Constraint> {
     throw new Error('not implemented')
   }
 
-  protected static countMax(constraint: constraint) {
+  protected static countMax(constraint: Constraint) {
     return constraint.max || constraint.min * 3
   }
 }

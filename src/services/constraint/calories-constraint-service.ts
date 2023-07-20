@@ -1,6 +1,6 @@
 import { IUser, Activity, Sex, WeightGoal } from '@/entities/user/user.types'
 import ConstraintService from '@/services/constraint/constraint-service'
-import DateService from '@/services/date/date-service'
+import UserService from '@/services/user/user-service'
 
 export default class CaloriesConstraintService extends ConstraintService {
   public static getConstraints(user: IUser) {
@@ -14,9 +14,8 @@ export default class CaloriesConstraintService extends ConstraintService {
   }
 
   private static getBasalMetabolicRate(user: IUser) {
-    const age = Math.round(
-      (DateService.getToday() - user.birthDate) / DateService.millisecondsInYear
-    )
+    const userService = new UserService(user)
+    const age = userService.getAge()
     const coefficient = user.sex === Sex.male ? 5 : -161
     return 10 * user.weight + 6.25 * user.height - 5 * age + coefficient
   }
