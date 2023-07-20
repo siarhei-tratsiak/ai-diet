@@ -1,4 +1,4 @@
-const enum nutrients {
+export enum Nutrients {
   potassium = 1092,
   zinc = 1095,
   copper = 1098,
@@ -29,5 +29,3 @@ const enum nutrients {
   lipid = 1004,
   protein = 1003
 }
-
-export default nutrients

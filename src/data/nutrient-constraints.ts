@@ -1,177 +1,177 @@
 import {
-  constraint,
-  sexConstraint,
-  sexGoalWeightConstraint,
-  weights
+  Constraint,
+  SexConstraint,
+  SexGoalWeightConstraint,
+  Weights
 } from '@/entities/constraint/constraint.types'
-import nutrients from '@/entities/nutrient/nutrient.types'
-import { sex, weightGoal } from '@/entities/user/user.types'
+import { Nutrients } from '@/entities/nutrient/nutrient.types'
+import { Sex, WeightGoal } from '@/entities/user/user.types'
 
-const nutrientSexConstraints: { [key in nutrients]?: sexConstraint } = {
-  [nutrients.potassium]: { maleMin: 3400, femaleMin: 2600 },
-  [nutrients.zinc]: { maleMin: 9.4, femaleMin: 6.8, max: 40 },
-  [nutrients.copper]: { maleMin: 1.6, femaleMin: 1.3, max: 5 },
-  [nutrients.vitaminA]: { maleMin: 900, femaleMin: 700, max: 3000 },
-  [nutrients.vitaminC]: { maleMin: 110, femaleMin: 95, max: 2000 },
-  [nutrients.thiamin]: { maleMin: 1.2, femaleMin: 1.1 },
-  [nutrients.vitaminB6]: { maleMin: 1.7, femaleMin: 1.6, max: 25 },
-  [nutrients.choline]: { maleMin: 550, femaleMin: 425, max: 3500 },
-  [nutrients.vitaminK]: { maleMin: 120, femaleMin: 90 }
+const NutrientsexConstraints: { [key in Nutrients]?: SexConstraint } = {
+  [Nutrients.potassium]: { maleMin: 3400, femaleMin: 2600 },
+  [Nutrients.zinc]: { maleMin: 9.4, femaleMin: 6.8, max: 40 },
+  [Nutrients.copper]: { maleMin: 1.6, femaleMin: 1.3, max: 5 },
+  [Nutrients.vitaminA]: { maleMin: 900, femaleMin: 700, max: 3000 },
+  [Nutrients.vitaminC]: { maleMin: 110, femaleMin: 95, max: 2000 },
+  [Nutrients.thiamin]: { maleMin: 1.2, femaleMin: 1.1 },
+  [Nutrients.vitaminB6]: { maleMin: 1.7, femaleMin: 1.6, max: 25 },
+  [Nutrients.choline]: { maleMin: 550, femaleMin: 425, max: 3500 },
+  [Nutrients.vitaminK]: { maleMin: 120, femaleMin: 90 }
 }
 
-const nutrientUnconditionalConstraints: { [key in nutrients]?: constraint } = {
-  [nutrients.alcohol]: { min: 0, max: 24 },
-  [nutrients.water]: { min: 1000, max: 7000 },
-  [nutrients.caffeine]: { min: 0, max: 100 },
-  [nutrients.theobromine]: { min: 0, max: 250 },
-  [nutrients.fiber]: { min: 30 },
-  [nutrients.phosphorus]: { min: 580, max: 4000 },
-  [nutrients.sodium]: { min: 500, max: 1500 },
-  [nutrients.selenium]: { min: 70, max: 300 },
-  [nutrients.retinol]: { min: 900, max: 1500 },
-  [nutrients.betaCarotene]: { min: 4800 },
-  [nutrients.vitaminE]: { min: 5, max: 300 },
-  [nutrients.lycopene]: { min: 8000, max: 21000 },
-  [nutrients.luteinZeaxanthin]: { min: 5000, max: 10000 },
-  [nutrients.riboflavin]: { min: 1.6 },
-  [nutrients.folate]: { min: 400, max: 1000 },
-  [nutrients.vitaminB12]: { min: 4 },
-  [nutrients.cholesterol]: { min: 0, max: 3000 }
+const nutrientUnconditionalConstraints: { [key in Nutrients]?: Constraint } = {
+  [Nutrients.alcohol]: { min: 0, max: 24 },
+  [Nutrients.water]: { min: 1000, max: 7000 },
+  [Nutrients.caffeine]: { min: 0, max: 100 },
+  [Nutrients.theobromine]: { min: 0, max: 250 },
+  [Nutrients.fiber]: { min: 30 },
+  [Nutrients.phosphorus]: { min: 580, max: 4000 },
+  [Nutrients.sodium]: { min: 500, max: 1500 },
+  [Nutrients.selenium]: { min: 70, max: 300 },
+  [Nutrients.retinol]: { min: 900, max: 1500 },
+  [Nutrients.betaCarotene]: { min: 4800 },
+  [Nutrients.vitaminE]: { min: 5, max: 300 },
+  [Nutrients.lycopene]: { min: 8000, max: 21000 },
+  [Nutrients.luteinZeaxanthin]: { min: 5000, max: 10000 },
+  [Nutrients.riboflavin]: { min: 1.6 },
+  [Nutrients.folate]: { min: 400, max: 1000 },
+  [Nutrients.vitaminB12]: { min: 4 },
+  [Nutrients.cholesterol]: { min: 0, max: 3000 }
 }
 
-const nutrientSexGoalWeightConstraints: {
-  [key in nutrients]?: sexGoalWeightConstraint
+const NutrientsexGoalWeightConstraints: {
+  [key in Nutrients]?: SexGoalWeightConstraint
 } = {
-  [nutrients.carbohydrate]: {
-    [sex.male]: {
-      [weightGoal.lose]: {
-        [weights.fifty]: 160,
-        [weights.sixty]: 165,
-        [weights.seventy]: 175,
-        [weights.eighty]: 185
+  [Nutrients.carbohydrate]: {
+    [Sex.male]: {
+      [WeightGoal.lose]: {
+        [Weights.fifty]: 160,
+        [Weights.sixty]: 165,
+        [Weights.seventy]: 175,
+        [Weights.eighty]: 185
       },
-      [weightGoal.keep]: {
-        [weights.fifty]: 215,
-        [weights.sixty]: 230,
-        [weights.seventy]: 250,
-        [weights.eighty]: 260
+      [WeightGoal.keep]: {
+        [Weights.fifty]: 215,
+        [Weights.sixty]: 230,
+        [Weights.seventy]: 250,
+        [Weights.eighty]: 260
       },
-      [weightGoal.gain]: {
-        [weights.fifty]: 275,
-        [weights.sixty]: 290,
-        [weights.seventy]: 300,
-        [weights.eighty]: 320
+      [WeightGoal.gain]: {
+        [Weights.fifty]: 275,
+        [Weights.sixty]: 290,
+        [Weights.seventy]: 300,
+        [Weights.eighty]: 320
       }
     },
-    [sex.female]: {
-      [weightGoal.lose]: {
-        [weights.fifty]: 120,
-        [weights.sixty]: 150,
-        [weights.seventy]: 170,
-        [weights.eighty]: 150
+    [Sex.female]: {
+      [WeightGoal.lose]: {
+        [Weights.fifty]: 120,
+        [Weights.sixty]: 150,
+        [Weights.seventy]: 170,
+        [Weights.eighty]: 150
       },
-      [weightGoal.keep]: {
-        [weights.fifty]: 150,
-        [weights.sixty]: 190,
-        [weights.seventy]: 200,
-        [weights.eighty]: 220
+      [WeightGoal.keep]: {
+        [Weights.fifty]: 150,
+        [Weights.sixty]: 190,
+        [Weights.seventy]: 200,
+        [Weights.eighty]: 220
       },
-      [weightGoal.gain]: {
-        [weights.fifty]: 200,
-        [weights.sixty]: 245,
-        [weights.seventy]: 260,
-        [weights.eighty]: 240
+      [WeightGoal.gain]: {
+        [Weights.fifty]: 200,
+        [Weights.sixty]: 245,
+        [Weights.seventy]: 260,
+        [Weights.eighty]: 240
       }
     }
   },
-  [nutrients.lipid]: {
-    [sex.male]: {
-      [weightGoal.lose]: {
-        [weights.fifty]: 40,
-        [weights.sixty]: 40,
-        [weights.seventy]: 40,
-        [weights.eighty]: 40
+  [Nutrients.lipid]: {
+    [Sex.male]: {
+      [WeightGoal.lose]: {
+        [Weights.fifty]: 40,
+        [Weights.sixty]: 40,
+        [Weights.seventy]: 40,
+        [Weights.eighty]: 40
       },
-      [weightGoal.keep]: {
-        [weights.fifty]: 55,
-        [weights.sixty]: 60,
-        [weights.seventy]: 60,
-        [weights.eighty]: 65
+      [WeightGoal.keep]: {
+        [Weights.fifty]: 55,
+        [Weights.sixty]: 60,
+        [Weights.seventy]: 60,
+        [Weights.eighty]: 65
       },
-      [weightGoal.gain]: {
-        [weights.fifty]: 70,
-        [weights.sixty]: 70,
-        [weights.seventy]: 75,
-        [weights.eighty]: 80
+      [WeightGoal.gain]: {
+        [Weights.fifty]: 70,
+        [Weights.sixty]: 70,
+        [Weights.seventy]: 75,
+        [Weights.eighty]: 80
       }
     },
-    [sex.female]: {
-      [weightGoal.lose]: {
-        [weights.fifty]: 30,
-        [weights.sixty]: 35,
-        [weights.seventy]: 35,
-        [weights.eighty]: 40
+    [Sex.female]: {
+      [WeightGoal.lose]: {
+        [Weights.fifty]: 30,
+        [Weights.sixty]: 35,
+        [Weights.seventy]: 35,
+        [Weights.eighty]: 40
       },
-      [weightGoal.keep]: {
-        [weights.fifty]: 45,
-        [weights.sixty]: 50,
-        [weights.seventy]: 50,
-        [weights.eighty]: 55
+      [WeightGoal.keep]: {
+        [Weights.fifty]: 45,
+        [Weights.sixty]: 50,
+        [Weights.seventy]: 50,
+        [Weights.eighty]: 55
       },
-      [weightGoal.gain]: {
-        [weights.fifty]: 60,
-        [weights.sixty]: 60,
-        [weights.seventy]: 65,
-        [weights.eighty]: 70
+      [WeightGoal.gain]: {
+        [Weights.fifty]: 60,
+        [Weights.sixty]: 60,
+        [Weights.seventy]: 65,
+        [Weights.eighty]: 70
       }
     }
   },
-  [nutrients.protein]: {
-    [sex.male]: {
-      [weightGoal.lose]: {
-        [weights.fifty]: 165,
-        [weights.sixty]: 170,
-        [weights.seventy]: 175,
-        [weights.eighty]: 185
+  [Nutrients.protein]: {
+    [Sex.male]: {
+      [WeightGoal.lose]: {
+        [Weights.fifty]: 165,
+        [Weights.sixty]: 170,
+        [Weights.seventy]: 175,
+        [Weights.eighty]: 185
       },
-      [weightGoal.keep]: {
-        [weights.fifty]: 145,
-        [weights.sixty]: 155,
-        [weights.seventy]: 165,
-        [weights.eighty]: 175
+      [WeightGoal.keep]: {
+        [Weights.fifty]: 145,
+        [Weights.sixty]: 155,
+        [Weights.seventy]: 165,
+        [Weights.eighty]: 175
       },
-      [weightGoal.gain]: {
-        [weights.fifty]: 180,
-        [weights.sixty]: 190,
-        [weights.seventy]: 200,
-        [weights.eighty]: 210
+      [WeightGoal.gain]: {
+        [Weights.fifty]: 180,
+        [Weights.sixty]: 190,
+        [Weights.seventy]: 200,
+        [Weights.eighty]: 210
       }
     },
-    [sex.female]: {
-      [weightGoal.lose]: {
-        [weights.fifty]: 140,
-        [weights.sixty]: 150,
-        [weights.seventy]: 165,
-        [weights.eighty]: 175
+    [Sex.female]: {
+      [WeightGoal.lose]: {
+        [Weights.fifty]: 140,
+        [Weights.sixty]: 150,
+        [Weights.seventy]: 165,
+        [Weights.eighty]: 175
       },
-      [weightGoal.keep]: {
-        [weights.fifty]: 115,
-        [weights.sixty]: 125,
-        [weights.seventy]: 135,
-        [weights.eighty]: 145
+      [WeightGoal.keep]: {
+        [Weights.fifty]: 115,
+        [Weights.sixty]: 125,
+        [Weights.seventy]: 135,
+        [Weights.eighty]: 145
       },
-      [weightGoal.gain]: {
-        [weights.fifty]: 155,
-        [weights.sixty]: 165,
-        [weights.seventy]: 175,
-        [weights.eighty]: 185
+      [WeightGoal.gain]: {
+        [Weights.fifty]: 155,
+        [Weights.sixty]: 165,
+        [Weights.seventy]: 175,
+        [Weights.eighty]: 185
       }
     }
   }
 }
 
 export {
-  nutrientSexConstraints,
-  nutrientSexGoalWeightConstraints,
+  NutrientsexConstraints,
+  NutrientsexGoalWeightConstraints,
   nutrientUnconditionalConstraints
 }

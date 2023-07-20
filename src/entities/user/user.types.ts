@@ -1,27 +1,25 @@
 export interface IUser {
-  activity: activity
+  activity: Activity
   birthDate: number
   height: number
-  sex: sex
+  sex: Sex
   weight: number
-  weightGoal: weightGoal
+  weightGoal: WeightGoal
 }
 
-const enum activity {
+export enum Activity {
   low,
   medium,
   hight
 }
 
-const enum sex {
+export enum Sex {
   male,
   female
 }
 
-const enum weightGoal {
+export enum WeightGoal {
   lose,
   keep,
   gain
 }
-
-export { activity, sex, weightGoal }

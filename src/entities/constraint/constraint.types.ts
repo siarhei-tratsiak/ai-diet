@@ -1,29 +1,27 @@
-import { sex, weightGoal } from '@/entities/user/user.types'
+import { Sex, WeightGoal } from '@/entities/user/user.types'
 
-const enum weights {
+export enum Weights {
   fifty,
   sixty,
   seventy,
   eighty
 }
 
-export type constraint = {
+export type Constraint = {
   min: number
   max?: number
 }
 
-export type sexConstraint = {
+export type SexConstraint = {
   maleMin: number
   femaleMin: number
   max?: number
 }
 
-export type sexGoalWeightConstraint = {
-  [key in sex]: {
-    [key in weightGoal]: {
-      [key in weights]: number
+export type SexGoalWeightConstraint = {
+  [key in Sex]: {
+    [key in WeightGoal]: {
+      [key in Weights]: number
     }
   }
 }
-
-export { weights }

@@ -1,12 +1,14 @@
 import {
-  sexGoalWeightConstraint,
-  weights
+  SexGoalWeightConstraint,
+  Weights
 } from '@/entities/constraint/constraint.types'
-import { sex, weightGoal } from '@/entities/user/user.types'
+import { Sex, WeightGoal } from '@/entities/user/user.types'
 import ConstraintService from '@/services/constraint/constraint-service'
 
 export default class SexGoalWeightConstraintService extends ConstraintService {
-  static getConstraints(constraint: sexGoalWeightConstraint & conditions) {
+  public static getConstraints(
+    constraint: SexGoalWeightConstraint & conditions
+  ) {
     const { sex, weight, weightGoal } = constraint
     const recommended = constraint[sex][weightGoal][weight]
     const min = recommended * 0.9
@@ -17,7 +19,7 @@ export default class SexGoalWeightConstraintService extends ConstraintService {
 }
 
 type conditions = {
-  sex: sex
-  weight: weights
-  weightGoal: weightGoal
+  sex: Sex
+  weight: Weights
+  weightGoal: WeightGoal
 }
