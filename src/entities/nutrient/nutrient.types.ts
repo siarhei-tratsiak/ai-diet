@@ -30,4 +30,4 @@ const enum nutrients {
   protein = 1003
 }
 
-export { nutrients }
+export default nutrients

@@ -1,7 +1,13 @@
-import { nutrients } from '@/entities/nutrient/nutrient.types'
+import {
+  constraint,
+  sexConstraint,
+  sexGoalWeightConstraint,
+  weights
+} from '@/entities/constraint/constraint.types'
+import nutrients from '@/entities/nutrient/nutrient.types'
 import { sex, weightGoal } from '@/entities/user/user.types'
 
-const nutrientSexConstraints = {
+const nutrientSexConstraints: { [key in nutrients]?: sexConstraint } = {
   [nutrients.potassium]: { maleMin: 3400, femaleMin: 2600 },
   [nutrients.zinc]: { maleMin: 9.4, femaleMin: 6.8, max: 40 },
   [nutrients.copper]: { maleMin: 1.6, femaleMin: 1.3, max: 5 },
@@ -13,7 +19,7 @@ const nutrientSexConstraints = {
   [nutrients.vitaminK]: { maleMin: 120, femaleMin: 90 }
 }
 
-const nutrientUnconditionalConstraints = {
+const nutrientUnconditionalConstraints: { [key in nutrients]?: constraint } = {
   [nutrients.alcohol]: { min: 0, max: 24 },
   [nutrients.water]: { min: 1000, max: 7000 },
   [nutrients.caffeine]: { min: 0, max: 100 },
@@ -33,130 +39,132 @@ const nutrientUnconditionalConstraints = {
   [nutrients.cholesterol]: { min: 0, max: 3000 }
 }
 
-const nutrientSexGoalWeightConstraints = {
+const nutrientSexGoalWeightConstraints: {
+  [key in nutrients]?: sexGoalWeightConstraint
+} = {
   [nutrients.carbohydrate]: {
     [sex.male]: {
       [weightGoal.lose]: {
-        50: 160,
-        60: 165,
-        70: 175,
-        80: 185
+        [weights.fifty]: 160,
+        [weights.sixty]: 165,
+        [weights.seventy]: 175,
+        [weights.eighty]: 185
       },
       [weightGoal.keep]: {
-        50: 215,
-        60: 230,
-        70: 250,
-        80: 260
+        [weights.fifty]: 215,
+        [weights.sixty]: 230,
+        [weights.seventy]: 250,
+        [weights.eighty]: 260
       },
       [weightGoal.gain]: {
-        50: 275,
-        60: 290,
-        70: 300,
-        80: 320
+        [weights.fifty]: 275,
+        [weights.sixty]: 290,
+        [weights.seventy]: 300,
+        [weights.eighty]: 320
       }
     },
     [sex.female]: {
       [weightGoal.lose]: {
-        50: 120,
-        60: 150,
-        70: 170,
-        80: 150
+        [weights.fifty]: 120,
+        [weights.sixty]: 150,
+        [weights.seventy]: 170,
+        [weights.eighty]: 150
       },
       [weightGoal.keep]: {
-        50: 150,
-        60: 190,
-        70: 200,
-        80: 220
+        [weights.fifty]: 150,
+        [weights.sixty]: 190,
+        [weights.seventy]: 200,
+        [weights.eighty]: 220
       },
       [weightGoal.gain]: {
-        50: 200,
-        60: 245,
-        70: 260,
-        80: 240
+        [weights.fifty]: 200,
+        [weights.sixty]: 245,
+        [weights.seventy]: 260,
+        [weights.eighty]: 240
       }
     }
   },
   [nutrients.lipid]: {
     [sex.male]: {
       [weightGoal.lose]: {
-        50: 40,
-        60: 40,
-        70: 40,
-        80: 40
+        [weights.fifty]: 40,
+        [weights.sixty]: 40,
+        [weights.seventy]: 40,
+        [weights.eighty]: 40
       },
       [weightGoal.keep]: {
-        50: 55,
-        60: 60,
-        70: 60,
-        80: 65
+        [weights.fifty]: 55,
+        [weights.sixty]: 60,
+        [weights.seventy]: 60,
+        [weights.eighty]: 65
       },
       [weightGoal.gain]: {
-        50: 70,
-        60: 70,
-        70: 75,
-        80: 80
+        [weights.fifty]: 70,
+        [weights.sixty]: 70,
+        [weights.seventy]: 75,
+        [weights.eighty]: 80
       }
     },
     [sex.female]: {
       [weightGoal.lose]: {
-        50: 30,
-        60: 35,
-        70: 35,
-        80: 40
+        [weights.fifty]: 30,
+        [weights.sixty]: 35,
+        [weights.seventy]: 35,
+        [weights.eighty]: 40
       },
       [weightGoal.keep]: {
-        50: 45,
-        60: 50,
-        70: 50,
-        80: 55
+        [weights.fifty]: 45,
+        [weights.sixty]: 50,
+        [weights.seventy]: 50,
+        [weights.eighty]: 55
       },
       [weightGoal.gain]: {
-        50: 60,
-        60: 60,
-        70: 65,
-        80: 70
+        [weights.fifty]: 60,
+        [weights.sixty]: 60,
+        [weights.seventy]: 65,
+        [weights.eighty]: 70
       }
     }
   },
   [nutrients.protein]: {
     [sex.male]: {
       [weightGoal.lose]: {
-        50: 165,
-        60: 170,
-        70: 175,
-        80: 185
+        [weights.fifty]: 165,
+        [weights.sixty]: 170,
+        [weights.seventy]: 175,
+        [weights.eighty]: 185
       },
       [weightGoal.keep]: {
-        50: 145,
-        60: 155,
-        70: 165,
-        80: 175
+        [weights.fifty]: 145,
+        [weights.sixty]: 155,
+        [weights.seventy]: 165,
+        [weights.eighty]: 175
       },
       [weightGoal.gain]: {
-        50: 180,
-        60: 190,
-        70: 200,
-        80: 210
+        [weights.fifty]: 180,
+        [weights.sixty]: 190,
+        [weights.seventy]: 200,
+        [weights.eighty]: 210
       }
     },
     [sex.female]: {
       [weightGoal.lose]: {
-        50: 140,
-        60: 150,
-        70: 165,
-        80: 175
+        [weights.fifty]: 140,
+        [weights.sixty]: 150,
+        [weights.seventy]: 165,
+        [weights.eighty]: 175
       },
       [weightGoal.keep]: {
-        50: 115,
-        60: 125,
-        70: 135,
-        80: 145
+        [weights.fifty]: 115,
+        [weights.sixty]: 125,
+        [weights.seventy]: 135,
+        [weights.eighty]: 145
       },
       [weightGoal.gain]: {
-        50: 155,
-        60: 165,
-        70: 175,
-        80: 185
+        [weights.fifty]: 155,
+        [weights.sixty]: 165,
+        [weights.seventy]: 175,
+        [weights.eighty]: 185
       }
     }
   }
