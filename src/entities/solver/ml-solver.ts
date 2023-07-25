@@ -11,9 +11,9 @@ export default class MlSolver extends Solver {
     const coefficients = tf.variable(tf.randomUniform([numCoefficients, 1]))
 
     // Define the optimizer and training configuration
-    const learningRate = 0.01
+    const learningRate = 0.0000000001
     const optimizer = tf.train.sgd(learningRate)
-    const numIterations = 100
+    const numIterations = 1000
 
     // Train the model
     for (let iter = 0; iter < numIterations; iter++) {

@@ -27,5 +27,10 @@ export enum Nutrients {
   cholesterol = 1253,
   carbohydrate = 1005,
   lipid = 1004,
-  protein = 1003
+  protein = 1003,
+  calcium = 1087,
+  calories = 1008,
+  iron = 1089,
+  magnesium = 1090,
+  vitaminD = 1114
 }

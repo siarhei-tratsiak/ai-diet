@@ -1,15 +1,38 @@
 <script setup lang="ts">
 import HelloWorld from '@/components/HelloWorld.vue'
+import nutrientIndices from '@/data/nutrient-indices'
+import productNutrientValues from '@/data/product-nutrient-values'
 import MlSolver from '@/entities/solver/ml-solver'
+import User from '@/entities/user/user'
+import ConstraintsService from '@/services/constraint/constraints-service'
 
-// Define the data points for the system of linear equations
-const x = [
-  [1, 2],
-  [1, 2]
-]
-const y = [3, 5]
+const nutrientValues = productNutrientValues.map(nutrient => nutrient[1])
+const transposedNutrientValues = nutrientValues[0].map(
+  (_: number, colIndex: number) => nutrientValues.map(row => row[colIndex])
+)
+
+const x: number[][] = []
+
+const y: number[] = []
+
+const constraints = ConstraintsService.getConstraints(User.getInstance())
+
+Object.entries(constraints).forEach(([key, value]) => {
+  const row = nutrientIndices.findIndex(
+    nutrientIndex => nutrientIndex === Number(key)
+  )
+
+  if (row !== -1) {
+    x.push(transposedNutrientValues[row])
+    x.push(transposedNutrientValues[row])
+    y.push(value.min)
+    y.push(value.max)
+  }
+})
 
 const result = MlSolver.solve(x, y)
+  .flat()
+  .sort((a, b) => b - a)
 </script>
 
 <template>

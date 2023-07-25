@@ -7,7 +7,7 @@ import {
 import { Nutrients } from '@/entities/nutrient/nutrient.types'
 import { Sex, WeightGoal } from '@/entities/user/user.types'
 
-const NutrientsexConstraints: { [key in Nutrients]?: SexConstraint } = {
+const nutrientSexConstraints: { [key in Nutrients]?: SexConstraint } = {
   [Nutrients.potassium]: { maleMin: 3400, femaleMin: 2600 },
   [Nutrients.zinc]: { maleMin: 9.4, femaleMin: 6.8, max: 40 },
   [Nutrients.copper]: { maleMin: 1.6, femaleMin: 1.3, max: 5 },
@@ -39,7 +39,7 @@ const nutrientUnconditionalConstraints: { [key in Nutrients]?: Constraint } = {
   [Nutrients.cholesterol]: { min: 0, max: 3000 }
 }
 
-const NutrientsexGoalWeightConstraints: {
+const nutrientSexGoalWeightConstraints: {
   [key in Nutrients]?: SexGoalWeightConstraint
 } = {
   [Nutrients.carbohydrate]: {
@@ -171,7 +171,7 @@ const NutrientsexGoalWeightConstraints: {
 }
 
 export {
-  NutrientsexConstraints,
-  NutrientsexGoalWeightConstraints,
+  nutrientSexConstraints,
+  nutrientSexGoalWeightConstraints,
   nutrientUnconditionalConstraints
 }

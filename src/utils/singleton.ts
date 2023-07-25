@@ -9,7 +9,8 @@ export default function Singleton<T>() {
     }
 
     public static getInstance(): T {
-      if (!this.instance) this.instance = new this(...Singleton.args) as T
+      if (!this.instance)
+        this.instance = new this(...(Singleton.args || [])) as T
 
       return this.instance
     }
